@@ -36,17 +36,21 @@ var word = e.transcription;
       
        function(data) {
     
-      var result = JSON.stringify(data);
+     var noun = data.noun;
+      var verb = data.verb;
+    
+      if(noun){   
+        var result = JSON.stringify(noun["syn"]);      
+      }
+         else { var result= JSON.stringify(verb["syn"]);}
       console.log('Received data.');
       vibe.vibrate('short');
-      main.body(result);
-    },
+    
+         main.body(result);
+   
        
-    function(error) {
-      console.log('Error receiving thesaurus');  
-      main.body("Could not receive thesaurus data");
-    }
-  );
+   
+  
 }); 
-             
+});             
 main.show();
